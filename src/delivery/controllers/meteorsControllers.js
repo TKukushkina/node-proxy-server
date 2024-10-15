@@ -1,4 +1,5 @@
 import { getMeteors } from "../../useCases/getMeteors.js";
+import Exception from "../../utils/Exception.js";
 
 export const getMeteorsController = async (req, res, next) => {
   const {
@@ -18,6 +19,6 @@ export const getMeteorsController = async (req, res, next) => {
       count: count === "true",
     });
   } catch (error) {
-    next(`Error fetching data from NASA: ${error.message}`);
+    next(new Exception(500, `Error fetching data from NASA: ${error.message}`));
   }
 };
