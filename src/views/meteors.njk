@@ -1,0 +1,42 @@
+{% extends 'base.njk' %}
+
+{% block mainContent %}
+    {% if meteors.length %}
+        <table>
+            <caption>
+                {% if count %}Number of meteors: {{ meteors.length }}
+                {% else %}Meteors
+                {% endif %}
+            </caption>
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Diameter (m)</th>
+                    <th scope="col">Hazardous</th>
+                    <th scope="col">Close approach date</th>
+                    <th scope="col">Velocity (km/s)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for meteor in meteors %}
+                    <tr>
+                        <td>{{ meteor.id }}</td>
+                        <td>{{ meteor.name }}</td>
+                        <td>{{ meteor.diameter }}</td>
+                        <td>
+                            {% if meteor.is_potentially_hazardous_asteroid %}Yes{% else %}No
+                            {% endif %}
+                        </td>
+                        <td>{{ meteor.close_approach_date_full }}</td>
+                        <td>{{ meteor.relative_velocity }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">No meteors</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
