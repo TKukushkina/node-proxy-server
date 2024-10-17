@@ -31,3 +31,24 @@ table td {
     color: #000000;
     padding: 5px;
 }
+
+form {
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+}
+
+form label {
+    margin-bottom: 10px;
+}
+
+form input {
+    margin-bottom: 20px;
+}
+
+img {
+    max-width: 500px;
+    margin: auto;
+    display: block;
+}
