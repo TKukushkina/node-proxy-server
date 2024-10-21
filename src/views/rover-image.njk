@@ -1,0 +1,19 @@
+{% extends 'base.njk' %}
+
+{% block mainContent %}
+    <form action="/rover/image" method="POST">
+        <label for="userId">User ID</label>
+        <input type="text" name="userId" placeholder="Used ID" required>
+
+        <label for="userName">User name</label>
+        <input type="text" name="userName" placeholder="User name" required>
+
+        <label for="userApiKey">User API key</label>
+        <input type="text" name="userApiKey" placeholder="User API key" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if image %}<img src={{image}} alt='rover image'/>{% endif %}
+
+{% endblock %}
