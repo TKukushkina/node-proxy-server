@@ -1,3 +1,5 @@
+import Exception from "../utils/Exception.js";
+
 export const validate =
   (schema, source = "body") =>
   async (req, res, next) => {
@@ -9,7 +11,8 @@ export const validate =
       const errorMessage = error.details
         .map((detail) => detail.message)
         .join(", ");
-      return res.status(403).json({ message: errorMessage });
+
+      next(new Exception(403, errorMessage));
     }
 
     next();
